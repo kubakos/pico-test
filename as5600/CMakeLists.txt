@@ -16,6 +16,3 @@ pico_enable_stdio_uart(as5600 0)
 
 # Create map/bin/hex/uf2 files
 pico_add_extra_outputs(as5600)
-
-# add url via pico_set_program_url
-auto_set_url(as5600)

@@ -1,11 +1,25 @@
 cmake_minimum_required(VERSION 3.13)
 
-# initialize pico-sdk from GIT
-# (note this can come from environment, CMake cache etc)
-set(PICO_SDK_FETCH_FROM_GIT on)
+# Path to the Pico SDK
+if (NOT DEFINED PICO_SDK_PATH)
+    set(PICO_SDK_PATH "${CMAKE_BINARY_DIR}/pico-sdk")
+endif()
 
-# Pull in SDK (must be before project)
-include(pico_sdk_import.cmake)
+# Include the Pico SDK initialization script
+if (NOT EXISTS ${PICO_SDK_PATH}/pico_sdk_init.cmake)
+    message(STATUS "Fetching Pico SDK from Git")
+    execute_process(
+        COMMAND git clone -b master https://github.com/raspberrypi/pico-sdk.git ${PICO_SDK_PATH}
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    )
+endif()
+
+include(${PICO_SDK_PATH}/pico_sdk_init.cmake)
+
+execute_process(
+    COMMAND git submodule update --init
+    WORKING_DIRECTORY ${PICO_SDK_PATH}
+)
 
 project(pico_test C CXX ASM)
 set(CMAKE_C_STANDARD 11)
@@ -19,8 +33,6 @@ set(PICO_TEST_PATH ${PROJECT_SOURCE_DIR})
 
 # Initialize the SDK
 pico_sdk_init()
-
-include(auto_set_url.cmake)
 
 add_compile_options(-Wall
         -Wno-format          # int != int32_t as far as the compiler is concerned because gcc has int32_t as long int
