@@ -5,6 +5,8 @@ if (NOT DEFINED PICO_SDK_PATH)
     set(PICO_SDK_PATH "${CMAKE_BINARY_DIR}/pico-sdk")
 endif()
 
+set(PICO_BOARD pico_w)
+
 # Include the Pico SDK initialization script
 if (NOT EXISTS ${PICO_SDK_PATH}/pico_sdk_init.cmake)
     message(STATUS "Fetching Pico SDK from Git")
@@ -17,7 +19,7 @@ endif()
 include(${PICO_SDK_PATH}/pico_sdk_init.cmake)
 
 execute_process(
-    COMMAND git submodule update --init
+    COMMAND git submodule update --init --recursive
     WORKING_DIRECTORY ${PICO_SDK_PATH}
 )
 
@@ -28,8 +30,6 @@ set(CMAKE_CXX_STANDARD 17)
 if (PICO_SDK_VERSION_STRING VERSION_LESS "1.3.0")
     message(FATAL_ERROR "Raspberry Pi Pico SDK version 1.3.0 (or later) required. Your version is ${PICO_SDK_VERSION_STRING}")
 endif()
-
-set(PICO_TEST_PATH ${PROJECT_SOURCE_DIR})
 
 # Initialize the SDK
 pico_sdk_init()
@@ -43,4 +43,5 @@ if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
 endif()
 
 # Add subdirectories
-add_subdirectory(as5600)
+add_subdirectory(as5600_sensor)
+add_subdirectory(bluetooth_comm)
