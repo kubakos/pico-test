@@ -2,12 +2,6 @@
 
 Testing various hardware with the pico_w.
 
-TODO
-------------------------
-microswitch
-bluetooth communication
-stepper motor control
-
 
 Usage:
 
@@ -24,3 +18,9 @@ make
 
 Then copy the .UF2 to the Pico from the build directory of the corresponding hardware. 
 To be able to see the recieved data from the pico you will need a serial communication program (e.g. bootterm, minicom).
+
+
+## TODO
+- microswitch
+- bluetooth communication
+- stepper motor control
