@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13)
 
 # Path to the Pico SDK
 if (NOT DEFINED PICO_SDK_PATH)
-    set(PICO_SDK_PATH "${CMAKE_BINARY_DIR}/pico-sdk")
+    set(PICO_SDK_PATH "${CMAKE_SOURCE_DIR}/pico-sdk")
 endif()
 
 set(PICO_BOARD pico_w)
@@ -12,7 +12,7 @@ if (NOT EXISTS ${PICO_SDK_PATH}/pico_sdk_init.cmake)
     message(STATUS "Fetching Pico SDK from Git")
     execute_process(
         COMMAND git clone -b master https://github.com/raspberrypi/pico-sdk.git ${PICO_SDK_PATH}
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     )
 endif()
 
