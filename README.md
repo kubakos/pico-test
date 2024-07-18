@@ -1,12 +1,8 @@
 # Raspberry Pi Pico W Tests
-
 Testing various hardware with the pico_w.
 
-
-Usage:
-
+### Usage:
 Clone and build.
-
 ```
 git clone https://github.com/kubakos/pico-test.git
 cd pico-test
@@ -20,7 +16,7 @@ Then copy the .UF2 to the Pico from the build directory of the corresponding har
 To be able to see the recieved data from the pico you will need a serial communication program (e.g. bootterm, minicom).
 
 
-## TODO
-- microswitch
+### TODO
 - bluetooth communication
+- microswitch
 - stepper motor control
