@@ -43,5 +43,4 @@ if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
 endif()
 
 # Add subdirectories
-add_subdirectory(as5600_sensor)
-add_subdirectory(bluetooth_comm)
+add_subdirectory(src)
