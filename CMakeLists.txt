@@ -7,7 +7,7 @@ endif()
 
 set(PICO_BOARD pico_w)
 
-set(SOURCE_FOLDER "src")
+set(SOURCE_FOLDER "code")
 
 # Include the Pico SDK initialization script
 if (NOT EXISTS ${PICO_SDK_PATH}/pico_sdk_init.cmake)
@@ -36,8 +36,6 @@ endif()
 # Initialize the SDK
 pico_sdk_init()
 
-include(example_auto_set_url.cmake)
-
 add_compile_options(-Wall
         -Wno-format          # int != int32_t as far as the compiler is concerned because gcc has int32_t as long int
         -Wno-unused-function # we have some for the docs that aren't called
@@ -47,4 +45,4 @@ if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
 endif()
 
 # Add subdirectories
-add_subdirectory(src)
+add_subdirectory(code)
