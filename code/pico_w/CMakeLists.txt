@@ -18,11 +18,6 @@ if (PICO_CYW43_SUPPORTED) # set by PICO_BOARD=pico_w
         set(WIFI_SSID "${WIFI_SSID}" CACHE INTERNAL "WiFi SSID for examples")
         set(WIFI_PASSWORD "${WIFI_PASSWORD}" CACHE INTERNAL "WiFi password for examples")
 
-        # add_subdirectory(wifi)
-        if (NOT TARGET pico_btstack_base)
-            message("Skipping Pico W Bluetooth examples as support is not available")
-        else()
-            add_subdirectory(bt)
-        endif()
+        add_subdirectory(wifi)
     endif()
 endif()
