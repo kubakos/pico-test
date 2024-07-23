@@ -18,6 +18,7 @@ To be able to see the recieved data from the pico you will need a serial communi
 
 ### TODO
 - wifi communication
+- RTOS
 - microswitch
-- stepper motor control
 - OLED panel
+- stepper motor control
